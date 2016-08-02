@@ -1,12 +1,60 @@
-describe('Fizzbuzz', function() {
+describe('FizzBuzz', function() {
 
   var fizzbuzz;
+
+  beforeEach(function() {
+    fizzbuzz = new FizzBuzz();
+  });
 
   describe('knows when a number is', function() {
 
     it('divisible by 3', function() {
-      fizzbuzz = new Fizzbuzz();
-      expect(isDivisibleByThree(3)).toEqual(true);
+      expect(fizzbuzz.isDivisibleByThree(3)).toBe(true);
+    });
+
+    it('divisble by 5', function() {
+      expect(fizzbuzz.isDivisibleByFive(5)).toBe(true);
+    });
+
+    it('divisble by 15', function() {
+      expect(fizzbuzz.isDivisibleByFifteen(15)).toBe(true);
+    });
+
+  });
+
+  describe('knows when a number is NOT', function() {
+
+    it('divisible by 3', function() {
+      expect(fizzbuzz.isDivisibleByThree(1)).toBe(false);
+
+    });
+
+    it('divisible by 5', function() {
+      expect(fizzbuzz.isDivisibleByFive(1)).toBe(false);
+    });
+
+    it('divisible by 15', function() {
+      expect(fizzbuzz.isDivisibleByFifteen(1)).toBe(false);
+    });
+
+  });
+
+  describe('while playing the game', function() {
+
+    it('"Fizz" when a number is divisible by 3', function() {
+      expect(fizzbuzz.shouts(3)).toEqual("Fizz");
+    });
+
+    it('"Buzz" when a number is divisible by 5', function(){
+      expect(fizzbuzz.shouts(5)).toEqual("Buzz");
+    });
+
+    it('"FizzBuzz" when a number is divisible by 15', function(){
+      expect(fizzbuzz.shouts(15)).toEqual("FizzBuzz");
+    });
+
+    it('returns the number', function(){
+      expect(fizzbuzz.shouts(1)).toEqual(1);
     });
 
   });
